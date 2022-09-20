@@ -26,7 +26,7 @@ export const Form = ({ newLocation }) => {
               type='submit'
               className='  border-2 border-white bg-black text-lg text-white p-4 w-32 rounded-md transition duration-150  hover:bg-white hover:text-black hover:border-4 hover:border-black '
             >
-              Buscar
+              Buscar.
             </button>
           </div>
         </form>
