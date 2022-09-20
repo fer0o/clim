@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 
-export const Form = () => {
+export const Form = ({ newLocation }) => {
   // creación de hook
   const [city, setCity] = useState('')
   //   funcion submit
   const onSubmit = e => {
     e.preventDefault()
     console.log({ city })
-    if (city === '' || !city) {
-      return
-    }
+    if (city === '' || !city) return
+
+    newLocation(city)
   }
   return (
     <div>
@@ -24,7 +24,7 @@ export const Form = () => {
             />
             <button
               type='submit'
-              className='  border-2 border-white bg-black text-lg text-white p-4 w-32 rounded-md hover:bg-white hover:text-black hover:border-4 hover:border-black '
+              className='  border-2 border-white bg-black text-lg text-white p-4 w-32 rounded-md transition duration-150  hover:bg-white hover:text-black hover:border-4 hover:border-black '
             >
               Buscar
             </button>
