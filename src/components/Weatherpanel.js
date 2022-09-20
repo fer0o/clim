@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Card from './Card'
 import { Form } from './Form'
 
 const Weatherpanel = () => {
@@ -57,6 +58,12 @@ const Weatherpanel = () => {
   return (
     <div>
       <Form newLocation={getLocation} />
+      <Card
+        showData={show}
+        loadingData={loading}
+        weather={weather}
+        forecast={forecast}
+      />
     </div>
   )
 }
