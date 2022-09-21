@@ -7,27 +7,45 @@ const Card = ({ showData, loadingData, weather, forecast }) => {
   const month = today.getMonth()
   const year = today.getFullYear()
   const date = `${day} / ${month} / ${year}`
+  let url = ''
+  let iconUrl = ''
   if (loadingData) {
     return <Spinner />
+  }
+  if (showData) {
+    url = 'https://openweathermap.org/img/w/'
+    iconUrl = url + weather.weather[0].icon + '.png'
   }
   return (
     <div>
       <div>
         {showData === true ? (
-          <div>
-            <h2 className='block text-center  bg-white p-4 w-36    m-auto text-xl font-bold  rounded-md '>
-              {weather.name}
-            </h2>
-            <div className='container flex justify-center m-auto p-2'>
-              <div className='grid lg:grid-cols-2 grid-cols-1 gap-2 border-2 border-white'>
+          <div className=' container m-auto w-auto '>
+            <div className=' grid grid-cols-1 lg:grid-cols-2 gap-2 mb-4 '>
+              <div className='p-2 border-2  border-white'>
+                <div className='block text-left   p-4  m-2  text-white font-bold  rounded-md absolute'>
+                  <h3 className='lg:p-8 lg:text-6xl '>{weather.name}</h3>
+                  <h3 className='lg:p-8 lg:text-6xl '>{weather.sys.country}</h3>
+                  <p className='lg:p-8 lg:text-6xl'>{date}</p>
+                  <h1 className='lg:p-8 lg:text-6xl'>
+                    {(weather.main.temp - 273.15).toFixed(1)}°C
+                  </h1>
+                  <p className='lg:p-8 lg:text-6xl'>
+                    <img src={iconUrl} className='h-20' alt='icon' />
+                    {weather.weather[0].description}
+                  </p>
+                </div>
+
                 <img
                   src='https://images.pexels.com/photos/1034662/pexels-photo-1034662.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
                   alt=''
-                  className='border-2 border-white p-2 '
+                  className='p-2 m-auto w-full h-[70vh]'
                 />
-                <div className='text-2xl text-white'>Texto</div>
               </div>
+              <div className='border-2  border-white'>texto</div>
             </div>
+
+            <div></div>
           </div>
         ) : (
           <h2>No hay información</h2>
