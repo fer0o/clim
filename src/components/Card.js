@@ -88,9 +88,9 @@ const Card = ({ showData, loadingData, weather, forecast }) => {
     <div>
       <div>
         {showData === true ? (
-          <div className=' container m-auto w-auto '>
-            <div className=' grid grid-cols-1 lg:grid-cols-6   mb-4 border-2  border-white  '>
-              <div className='border-2 border-r border-white col-span-2'>
+          <div className=' container m-auto '>
+            <div className=' grid grid-cols-1 lg:grid-cols-6  border-2  border-white rounded-md '>
+              <div className=' border-r-2 border-white col-span-2 '>
                 <div className='block text-left   p-4  m-2  text-white font-bold  rounded-md absolute'>
                   <h3 className=' lg:text-5xl '>
                     {weather.name} , {weather.sys.country}
@@ -109,67 +109,75 @@ const Card = ({ showData, loadingData, weather, forecast }) => {
                 <img
                   src='https://images.pexels.com/photos/2448749/pexels-photo-2448749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
                   alt=''
-                  className='p-2 m-auto w-full h-[70vh]'
+                  className='m-auto w-full h-[70vh]'
                 />
               </div>
-              <div className='col-span-4 block text-center text-xl text-white font-bold p-2 '>
-                <div className='space-y-8'>
-                  <h5>
-                    Temperatura Máxima:{' '}
-                    {(weather.main.temp_max - 273.15).toFixed(1)}°C
-                  </h5>
-                  <h5>
-                    Temperatura Mínima:{' '}
-                    {(weather.main.temp_min - 273.15).toFixed(1)}°C
-                  </h5>
-                  <h5>
-                    Sensación Térmica:{' '}
-                    {(weather.main.feels_like - 273.15).toFixed(1)}°C
-                  </h5>
-                  <h5>Humedad: {weather.main.humidity}%</h5>
-                  <h5>Velocidad del viento: {weather.wind.speed} m/s</h5>
-                </div>
+              <div className='col-span-4  text-xl text-white font-bold my-auto p-8 '>
+                {/* inicio grid row */}
+                <div className='flex flex-col space-y-16 '>
+                  <div className='text-center text-2xl space-y-4  '>
+                    <h5>
+                      Temperatura Máxima:{' '}
+                      {(weather.main.temp_max - 273.15).toFixed(1)}°C
+                    </h5>
+                    <h5>
+                      Temperatura Mínima:{' '}
+                      {(weather.main.temp_min - 273.15).toFixed(1)}°C
+                    </h5>
+                    <h5>
+                      Sensación Térmica:{' '}
+                      {(weather.main.feels_like - 273.15).toFixed(1)}°C
+                    </h5>
+                    <h5>Humedad: {weather.main.humidity}%</h5>
+                    <h5>Velocidad del viento: {weather.wind.speed} m/s</h5>
+                  </div>
 
-                <hr className='m-4' />
-                <h2 className='text-3xl'>Proximas temperaturas</h2>
-                <div className=' grid grid-cols-3 gap-2 mt-14 text-2xl '>
-                  {/* clima 3 hrs */}
-                  <div className=''>
-                    <p>{forecastDate_3} hrs</p>
-                    <p>
-                      <img
-                        src={iconUrl_3hrs}
-                        alt='icon'
-                        className='h-16 m-auto'
-                      />
-                      {forecast.list[1].weather[0].description}
-                    </p>
-                  </div>
-                  {/* clima 6 hrs */}
-                  <div className=' '>
-                    <p>{forecastDate_6} hrs</p>
-                    <p>
-                      <img
-                        src={iconUrl_6hrs}
-                        alt='icon'
-                        className='h-16 m-auto'
-                      />
-                      {forecast.list[2].weather[0].description}
-                    </p>
-                  </div>
-                  {/* clima 9 hrs */}
-                  <div className=''>
-                    <p>{forecastDate_9} hrs</p>
-                    <p>
-                      <img
-                        src={iconUrl_9hrs}
-                        alt='icon'
-                        className='h-16 m-auto'
-                      />
-                      {forecast.list[2].weather[0].description}
-                    </p>
+                  <hr />
+
+                  <div className='block text-center'>
+                    <h2 className='text-3xl  mb-8'>Proximas temperaturas</h2>
+
+                    <div className=' grid grid-cols-3 gap-4 text-xl '>
+                      {/* clima 3 hrs */}
+                      <div className=''>
+                        <p>{forecastDate_3} hrs</p>
+                        <p>
+                          <img
+                            src={iconUrl_3hrs}
+                            alt='icon'
+                            className='h-16 m-auto'
+                          />
+                          {forecast.list[1].weather[0].description}
+                        </p>
+                      </div>
+                      {/* clima 6 hrs */}
+                      <div className=' '>
+                        <p>{forecastDate_6} hrs</p>
+                        <p>
+                          <img
+                            src={iconUrl_6hrs}
+                            alt='icon'
+                            className='h-16 m-auto'
+                          />
+                          {forecast.list[2].weather[0].description}
+                        </p>
+                      </div>
+                      {/* clima 9 hrs */}
+                      <div className=''>
+                        <p>{forecastDate_9} hrs</p>
+                        <p>
+                          <img
+                            src={iconUrl_9hrs}
+                            alt='icon'
+                            className='h-16 m-auto'
+                          />
+                          {forecast.list[2].weather[0].description}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
+                {/* fin grid row */}
               </div>
             </div>
           </div>
